@@ -1,0 +1,10 @@
+AllCops:
+  DisplayCopNames: true
+  Exclude: []
+Naming/FileName:
+  Exclude:
+    - Rakefile
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - '*.gemspec'
