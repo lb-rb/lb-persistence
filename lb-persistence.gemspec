@@ -22,7 +22,7 @@ Gem::Specification.new do |gem|
   gem.test_files            = `git ls-files -- spec`
                               .split($INPUT_RECORD_SEPARATOR)
   gem.extra_rdoc_files      = %w[README.md]
-  gem.required_ruby_version = '>= 2.5'
+  gem.required_ruby_version = '>= 2.4'
 
   gem.add_dependency 'dry-struct',       '~> 0.4'
   gem.add_dependency 'rom',              '~> 4.2.1'
