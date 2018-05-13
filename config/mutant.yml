@@ -1,0 +1,3 @@
+name: lb-persistence
+namespace: LB::Persistence
+ignore_subjects: []
