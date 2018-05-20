@@ -71,8 +71,6 @@ module LB
       @uri ||= settings.database_uri
     end
 
-    private
-
     # Create ROM container for given config
     #
     # @param [ROM::Configuration] config
@@ -85,18 +83,6 @@ module LB
       ROM.container(config)
     end
 
-    # Setup rom for given URI
-    #
-    # @param [String]
-    #
-    # @return [ROM::Conatainer]
-    #
-    # @api private
-    #
-    def rom_setup(uri)
-      container_from(configure_for(uri))
-    end
-
     # Create ROM configuration for given connection or URI
     #
     # @param [Sequel::Database | String]
@@ -107,6 +93,20 @@ module LB
     #
     def configuration_for(connection)
       ROM::Configuration.new(:sql, connection)
+    end
+
+    private
+
+    # Setup rom for given URI
+    #
+    # @param [String]
+    #
+    # @return [ROM::Conatainer]
+    #
+    # @api private
+    #
+    def rom_setup(uri)
+      container_from(configure_for(uri))
     end
 
     # Configure ROM
