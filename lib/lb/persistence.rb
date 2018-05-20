@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 # ROM
+require 'rom'
 require 'rom-sql'
-require 'rom-repository'
-require 'rom-mapper'
-require 'rom-changeset'
 
 require 'lb/persistence/types'
 require 'lb/persistence/settings'
