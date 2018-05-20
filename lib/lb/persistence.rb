@@ -9,6 +9,7 @@ require 'lb/persistence/settings'
 
 # Helpers
 require 'lb/persistence/relation/joins'
+require 'lb/persistence/model/attributes'
 
 # LB namespace
 module LB
