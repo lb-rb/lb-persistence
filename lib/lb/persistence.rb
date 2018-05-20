@@ -7,6 +7,9 @@ require 'rom-sql'
 require 'lb/persistence/types'
 require 'lb/persistence/settings'
 
+# Helpers
+require 'lb/persistence/relation/joins'
+
 # LB namespace
 module LB
   # Persistence
