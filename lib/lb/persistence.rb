@@ -45,13 +45,14 @@ module LB
     # Connect to database definied by given URI
     #
     # @param [String]
+    # @param [Hash]
     #
     # @return [Sequel::Database]
     #
     # @api private
     #
-    def connect(uri)
-      Sequel.connect(uri)
+    def connect(*args)
+      Sequel.connect(*args)
     end
 
     # Configure ROM for given connection or URI
