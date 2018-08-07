@@ -22,7 +22,7 @@ describe LB::Persistence::Functions, '.group_prefix' do
       end
 
       attribute :a, Types::Strict::String
-      attribute :items, Types::Strict::Array.member(nested)
+      attribute :items, Types::Strict::Array.of(nested)
     end
   end
 
