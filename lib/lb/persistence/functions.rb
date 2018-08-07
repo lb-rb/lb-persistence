@@ -35,12 +35,19 @@ module LB
           key.start_with?(prefix) ? key.gsub(/^#{prefix}/, '') : key
         end
 
-        def group_prefix(array, key, keys, prefix, model = nil)
-          compose do |ops|
-            ops << t(:group, key, keys)
-            ops << t(:map_array,
-                     t(:remove_key_prefix_inject_for, key, prefix, model))
-          end.call(array)
+        {
+          group: :remove_key_prefix_inject_for,
+          wrap:  :remove_key_prefix_inject_hash_for
+        }.each do |operation, inject|
+          # rubocop:disable Metrics/LineLength
+          define_method :"#{operation}_prefix" do |array, key, keys, prefix, model = nil|
+            # rubocop:enable Metrics/LineLength
+            compose do |ops|
+              ops << t(operation, key, keys)
+              ops << t(:map_array,
+                       t(inject, key, prefix, model))
+            end.call(array)
+          end
         end
 
         def remove_key_prefix_inject_for(hash, key, prefix, model = nil)
@@ -69,6 +76,11 @@ module LB
           t(:map_array, t(:constructor_inject, model)).call(array)
         end
         alias model inject_array
+
+        def remove_key_prefix_inject_hash_for(hash, key, prefix, model = nil)
+          t(:map_value, key,
+            t(:remove_key_prefix_inject, prefix, model)).call(hash)
+        end
       end
     end
   end

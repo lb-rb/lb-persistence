@@ -2,15 +2,15 @@
 
 require 'spec_helper'
 
-describe LB::Persistence::Functions, '.group_prefix' do
+describe LB::Persistence::Functions, '.wrap_prefix' do
   subject { object.call(data) }
 
   let(:object) do
-    described_class.t(:group_prefix, key, keys, prefix, nested_class)
+    described_class.t(:wrap_prefix, key, keys, prefix, nested_class)
       .>> described_class.t(:model, model_class)
   end
 
-  let(:key) { :items }
+  let(:key) { :item }
   let(:keys) { [:item_a] }
   let(:prefix) { 'item_' }
 
@@ -21,8 +21,8 @@ describe LB::Persistence::Functions, '.group_prefix' do
         include Dry::Types.module
       end
 
-      attribute :a, Types::Strict::String
-      attribute :items, Types::Strict::Array.of(nested)
+      attribute :a,    Types::Strict::String
+      attribute :item, nested
     end
   end
 
@@ -39,15 +39,14 @@ describe LB::Persistence::Functions, '.group_prefix' do
   let(:data) do
     [
       { a: 'a1', item_a: 'item_a1' },
-      { a: 'a1', item_a: 'item_a2' },
       { a: 'a2', item_a: 'item_a3' }
     ]
   end
 
   let(:expected_hash_values) do
     [
-      { a: 'a1', items: [{ a: 'item_a1' }, { a: 'item_a2' }] },
-      { a: 'a2', items: [{ a: 'item_a3' }] }
+      { a: 'a1', item: { a: 'item_a1' } },
+      { a: 'a2', item: { a: 'item_a3' } }
     ]
   end
 
