@@ -10,7 +10,7 @@ if ENV['COVERAGE'] == 'true'
     add_filter 'config'
     add_filter 'spec'
 
-    minimum_coverage 90
+    minimum_coverage 89
   end
 end
 
