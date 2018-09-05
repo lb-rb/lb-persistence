@@ -22,7 +22,9 @@ module LB
 
         def qualify_on(on)
           on.map do |source, target|
-            [source.qualified, target.qualified]
+            source = source.qualified if source.respond_to?(:qualified)
+            target = target.qualified if target.respond_to?(:qualified)
+            [source, target]
           end.to_h
         end
 
