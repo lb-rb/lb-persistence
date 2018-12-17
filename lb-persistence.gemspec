@@ -33,6 +33,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'guard-bundler',  '~> 2.1'
   gem.add_development_dependency 'guard-rspec',    '~> 4.7', '>= 4.7.3'
   gem.add_development_dependency 'guard-rubocop',  '~> 1.3'
-  gem.add_development_dependency 'rubocop',        '~> 0.52'
+  gem.add_development_dependency 'rubocop',        '~> 0.52.1'
   gem.add_development_dependency 'sqlite3',        '~> 1.3'
 end
