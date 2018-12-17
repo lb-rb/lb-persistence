@@ -52,8 +52,14 @@ module LB
 
         def remove_key_prefix_inject_for(hash, key, prefix, model = nil)
           t(:map_value, key,
-            t(:map_array,
-              t(:remove_key_prefix_inject, prefix, model))).call(hash)
+            t(:remove_key_prefix_inject_value, prefix, model)).call(hash)
+        end
+
+        def remove_key_prefix_inject_value(value, prefix, model = nil)
+          compose do |ops|
+            ops << t(:reject_array, t(:empty_hash?))
+            ops << t(:map_array, t(:remove_key_prefix_inject, prefix, model))
+          end.call(value)
         end
 
         def remove_key_prefix_inject(keys, prefix, model = nil)
@@ -80,6 +86,14 @@ module LB
         def remove_key_prefix_inject_hash_for(hash, key, prefix, model = nil)
           t(:map_value, key,
             t(:remove_key_prefix_inject, prefix, model)).call(hash)
+        end
+
+        def reject_array(array, fn)
+          Array(array).reject { |value| fn[value] }
+        end
+
+        def empty_hash?(hash)
+          hash.is_a?(Hash) && hash.values.all?(&:nil?)
         end
       end
     end
