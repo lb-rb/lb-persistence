@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-# encoding: utf-8
 
 guard :bundler do
   watch('Gemfile')
@@ -28,7 +27,7 @@ guard :rspec, cmd: 'bundle exec rspec ' +
     Dir["spec/unit/#{m[1]}/#{m[2]}*"]
   end
 
-  watch("lib/#{File.basename(File.expand_path('../', __FILE__))}.rb") do
+  watch("lib/#{File.basename(File.expand_path(__dir__))}.rb") do
     'spec'
   end
 

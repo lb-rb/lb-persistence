@@ -18,7 +18,7 @@ describe LB::Persistence::Functions, '.wrap_prefix' do
     nested = nested_class
     Class.new(Dry::Struct) do
       module Types
-        include Dry::Types.module
+        include Dry.Types(default: :nominal)
       end
 
       attribute :a,    Types::Strict::String
@@ -29,7 +29,7 @@ describe LB::Persistence::Functions, '.wrap_prefix' do
   let(:nested_class) do
     Class.new(Dry::Struct) do
       module Types
-        include Dry::Types.module
+        include Dry.Types(default: :nominal)
       end
 
       attribute :a, Types::Strict::String

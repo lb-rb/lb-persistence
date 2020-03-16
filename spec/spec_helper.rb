@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-# encoding: utf-8
 
 if ENV['COVERAGE'] == 'true'
   require 'simplecov'
@@ -10,7 +9,7 @@ if ENV['COVERAGE'] == 'true'
     add_filter 'config'
     add_filter 'spec'
 
-    minimum_coverage 89
+    minimum_coverage 88
   end
 end
 
@@ -21,7 +20,7 @@ require 'lb-persistence'
 require 'devtools/spec_helper'
 
 # require spec support files and shared behavior
-Dir[File.expand_path('../{support,shared}/**/*.rb', __FILE__)].each do |file|
+Dir[File.expand_path('{support,shared}/**/*.rb', __dir__)].sort.each do |file|
   require file
 end
 
