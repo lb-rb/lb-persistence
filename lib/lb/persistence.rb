@@ -9,7 +9,6 @@ require 'lb/persistence/settings'
 
 # Helpers
 require 'lb/persistence/relation/joins'
-require 'lb/persistence/model/attributes'
 require 'lb/persistence/functions'
 
 # LB namespace

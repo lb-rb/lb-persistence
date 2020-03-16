@@ -37,11 +37,11 @@ module LB
 
         {
           group: :remove_key_prefix_inject_for,
-          wrap:  :remove_key_prefix_inject_hash_for
+          wrap: :remove_key_prefix_inject_hash_for
         }.each do |operation, inject|
-          # rubocop:disable Metrics/LineLength
+          # rubocop:disable Layout/LineLength
           define_method :"#{operation}_prefix" do |array, key, keys, prefix, model = nil|
-            # rubocop:enable Metrics/LineLength
+            # rubocop:enable Layout/LineLength
             compose do |ops|
               ops << t(operation, key, keys)
               ops << t(:map_array,
@@ -88,8 +88,8 @@ module LB
             t(:remove_key_prefix_inject, prefix, model)).call(hash)
         end
 
-        def reject_array(array, fn)
-          Array(array).reject { |value| fn[value] }
+        def reject_array(array, function)
+          Array(array).reject { |value| function[value] }
         end
 
         def empty_hash?(hash)
