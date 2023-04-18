@@ -1,24 +1,28 @@
 # frozen_string_literal: true
 
-# Remove existing same-named tasks
-%w[ci ci:metrics].each do |task|
-  klass = Rake::Task
-  klass[task].clear if klass.task_defined?(task)
+namespace :metrics do
+  desc 'Check code style with RuboCop'
+  task :rubocop do
+    require 'rubocop'
+    begin
+      # args = %W[--config #{config.config_file}]
+      args = []
+      raise 'Rubocop failed' unless RuboCop::CLI.new.run(args).zero?
+    rescue Encoding::CompatibilityError => e
+      abort e.message
+    end
+  end
 end
 
-desc 'Run all specs, metrics and mutant'
+desc 'Run CI tasks'
 task ci: %w[ci:metrics]
 
 namespace :ci do
   tasks = %w[
-    metrics:coverage
-    metrics:yardstick:verify
     metrics:rubocop
-    metrics:flog
-    metrics:flay
     spec:integration
   ]
 
-  desc 'Run metrics (except mutant)'
+  desc 'Run metrics'
   task metrics: tasks
 end

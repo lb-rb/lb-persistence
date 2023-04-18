@@ -39,9 +39,7 @@ module LB
           group: :remove_key_prefix_inject_for,
           wrap: :remove_key_prefix_inject_hash_for
         }.each do |operation, inject|
-          # rubocop:disable Layout/LineLength
           define_method :"#{operation}_prefix" do |array, key, keys, prefix, model = nil|
-            # rubocop:enable Layout/LineLength
             compose do |ops|
               ops << t(operation, key, keys)
               ops << t(:map_array,

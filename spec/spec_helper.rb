@@ -17,8 +17,6 @@ $LOAD_PATH << 'lib'
 
 require 'lb-persistence'
 
-require 'devtools/spec_helper'
-
 # require spec support files and shared behavior
 Dir[File.expand_path('{support,shared}/**/*.rb', __dir__)].sort.each do |file|
   require file

@@ -33,6 +33,7 @@ measurements
 ## BUNDLER
 .bundle
 Gemfile.lock
+vendor
 
 ## ctags
 tags

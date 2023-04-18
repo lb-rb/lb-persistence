@@ -18,20 +18,17 @@ Gem::Specification.new do |gem|
                               .split($INPUT_RECORD_SEPARATOR)
   gem.executables           = `git ls-files -- bin/*`
                               .split("\n").map { |f| File.basename(f) }
-  gem.test_files            = `git ls-files -- spec`
-                              .split($INPUT_RECORD_SEPARATOR)
   gem.extra_rdoc_files      = %w[README.md]
-  gem.required_ruby_version = '>= 2.4'
+  gem.required_ruby_version = '>= 2.7'
 
-  gem.add_dependency 'dry-struct',       '~> 1.3'
-  gem.add_dependency 'rom',              '~> 5.2'
-  gem.add_dependency 'rom-sql',          '~> 3.2'
+  gem.add_dependency 'dry-struct',       '~> 1.6'
+  gem.add_dependency 'rom',              '~> 5.3'
+  gem.add_dependency 'rom-sql',          '~> 3.6'
 
-  gem.add_development_dependency 'devtools',       '~> 0.1.25'
-  gem.add_development_dependency 'guard',          '~> 2.16'
-  gem.add_development_dependency 'guard-bundler',  '~> 3.0'
-  gem.add_development_dependency 'guard-rspec',    '~> 4.7', '>= 4.7.3'
-  gem.add_development_dependency 'guard-rubocop',  '~> 1.3'
-  gem.add_development_dependency 'rubocop',        '~> 0.79'
-  gem.add_development_dependency 'sqlite3',        '~> 1.3'
+  gem.add_development_dependency 'rake',       '~> 13.0.6'
+  gem.add_development_dependency 'rspec',      '~> 3.12.0'
+  gem.add_development_dependency 'rspec-core', '~> 3.12.1'
+  gem.add_development_dependency 'rubocop',    '~> 1.5'
+  gem.add_development_dependency 'sqlite3',    '~> 1.6'
+  gem.metadata['rubygems_mfa_required'] = 'true'
 end
