@@ -7,7 +7,7 @@ describe LB::Persistence::Functions, '.wrap_prefix' do
 
   let(:object) do
     described_class.t(:wrap_prefix, key, keys, prefix, nested_class)
-      .>> described_class.t(:model, model_class)
+                   .>> described_class.t(:model, model_class)
   end
 
   let(:key) { :item }

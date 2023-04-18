@@ -1,1 +1,18 @@
-config/rubocop.yml
+AllCops:
+  TargetRubyVersion: 2.7
+  NewCops: enable
+  DisplayCopNames: true
+  Exclude:
+    - 'vendor/**/*'
+Naming/FileName:
+  Exclude:
+    - Rakefile
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+    - '*.gemspec'
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - 'spec/**/*.rb'
+Style/OperatorMethodCall:
+  Enabled: false

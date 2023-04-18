@@ -21,11 +21,11 @@ module LB
         end
 
         def qualify_on(on)
-          on.map do |source, target|
+          on.to_h do |source, target|
             source = source.qualified if source.respond_to?(:qualified)
             target = target.qualified if target.respond_to?(:qualified)
             [source, target]
-          end.to_h
+          end
         end
 
         def prefixed(relation,

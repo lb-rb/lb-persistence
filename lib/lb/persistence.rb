@@ -123,7 +123,7 @@ module LB
     # @api private
     #
     def configure(config)
-      config.auto_registration(settings.source_dir, options)
+      config.auto_registration(settings.source_dir, **options)
 
       config
     end
